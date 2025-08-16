@@ -70,7 +70,9 @@ def update_google_sheets(sheet, jobs):
             print("✅ No new jobs to add!")
             return
         
-        print(f"📝 Adding {len(new_jobs)} new jobs...")
+        # Reverse the order so newest jobs (from top of GitHub) appear at bottom of sheet
+        new_jobs.reverse()
+        print(f"📝 Adding {len(new_jobs)} new jobs (newest at bottom)...")
         
         # Batch add all new jobs at once (much more efficient)
         sheet.append_rows(new_jobs)
